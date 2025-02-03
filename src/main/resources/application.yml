@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: credit-module
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+    database-change-log-lock-table: CM_DB_CHANGELOG_LOCK
+    database-change-log-table: CM_DB_CHANGE_LOG
+    enabled: true
+  datasource:
+    url: ${POSTGRES_URL:jdbc:postgresql://localhost/credit}
+    username: ${POSTGRES_USER:credit}
+    password: ${POSTGRES_PASS:credit}
+  sql:
+    init:
+      mode: always
+  docker:
+    compose:
+      lifecycle-management: start_and_stop
+      start:
+        command: up
+      stop:
+        command: down
+        timeout: 10s
+      file: docker-compose.yml
