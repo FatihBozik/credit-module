@@ -4,6 +4,7 @@ import com.fatihbozik.creditmodule.model.UserEntity;
 import com.fatihbozik.creditmodule.security.CustomerUserDetails;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,5 +32,11 @@ public final class SecurityUtils {
     private static Optional<Authentication> getAuthentication() {
         return Optional.ofNullable(SecurityContextHolder.getContext())
                 .map(SecurityContext::getAuthentication);
+    }
+
+    public static void setCurrentUser(UserEntity user) {
+        CustomerUserDetails userDetails = new CustomerUserDetails(user);
+        Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 }

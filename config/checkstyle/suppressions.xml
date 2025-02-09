@@ -5,6 +5,7 @@
 <suppressions>
     <!-- Suppress MagicNumber checks in all unit tests -->
     <suppress checks="MagicNumber" files="[\\/]test[\\/].*[\\/]"/>
+    <suppress checks="MethodName" files="[\\/]test[\\/].*[\\/]"/>
 
     <!-- Suppress VisibilityModifier, AbbreviationAsWordInName, and MemberName checks only for Roles.java -->
     <suppress checks="VisibilityModifier" files="Roles.java"/>
