@@ -37,7 +37,7 @@ public class Loan {
     }
 
     private List<LoanInstallment> getInstallments(LoanEntity entity) {
-        return CollectionUtils.isEmpty(entity.getInstallments()) ? new ArrayList<>() :
-                entity.getInstallments().stream().map(LoanInstallment::new).toList();
+        return CollectionUtils.isEmpty(entity.getInstallments()) ? new ArrayList<>()
+                : entity.getInstallments().stream().map(LoanInstallment::new).toList();
     }
 }

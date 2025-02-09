@@ -79,12 +79,12 @@ class LoanServiceImplTest {
 
     @Test
     void listLoans_shouldReturnListOfLoans() {
-        LoanListQuery loanListQuery = new LoanListQuery();
         LoanEntity loanEntity = new LoanEntity();
         loanEntity.setId(1);
         loanEntity.setCustomer(new CustomerEntity());
         loanEntity.setLoanAmount(BigDecimal.TEN);
         loanEntity.setInstallments(List.of(new LoanInstallmentEntity()));
+        LoanListQuery loanListQuery = new LoanListQuery();
         when(loanRepository.listLoans(loanListQuery)).thenReturn(List.of(loanEntity));
 
         List<Loan> result = loanService.listLoans(loanListQuery);
