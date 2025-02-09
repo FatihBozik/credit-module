@@ -6,9 +6,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.apache.commons.lang3.BooleanUtils;
+import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -31,6 +33,11 @@ public class Loan {
         this.numberOfInstallment = entity.getNumberOfInstallment();
         this.createDate = entity.getCreateDate();
         this.paid = BooleanUtils.isTrue(entity.getPaid());
-        this.installments = entity.getInstallments().stream().map(LoanInstallment::new).toList();
+        this.installments = getInstallments(entity);
+    }
+
+    private List<LoanInstallment> getInstallments(LoanEntity entity) {
+        return CollectionUtils.isEmpty(entity.getInstallments()) ? new ArrayList<>() :
+                entity.getInstallments().stream().map(LoanInstallment::new).toList();
     }
 }

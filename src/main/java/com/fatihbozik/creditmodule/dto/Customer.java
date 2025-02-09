@@ -13,12 +13,14 @@ import java.math.BigDecimal;
 @ToString
 @NoArgsConstructor
 public class Customer {
+    private Integer id;
     private String name;
     private String surname;
     private BigDecimal creditLimit;
     private BigDecimal usedCreditLimit;
 
     public Customer(CustomerEntity entity) {
+        this.id = entity.getId();
         this.name = entity.getName();
         this.surname = entity.getSurname();
         this.creditLimit = entity.getCreditLimit();

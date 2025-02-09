@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @ToString
 @NoArgsConstructor
 public class LoanInstallment {
+    private Integer id;
     private BigDecimal amount;
     private BigDecimal paidAmount;
     private LocalDate dueDate;
@@ -22,6 +23,7 @@ public class LoanInstallment {
     private boolean paid;
 
     public LoanInstallment(LoanInstallmentEntity entity) {
+        this.id = entity.getId();
         this.amount = entity.getAmount();
         this.paidAmount = entity.getPaidAmount();
         this.dueDate = entity.getDueDate();
