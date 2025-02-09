@@ -199,6 +199,16 @@ Unit tests are provided to ensure the functionality of the application. To run t
 - If an installment is paid before the due date, a discount is applied.
 - If an installment is paid after the due date, a penalty is added.
 
+# Deployment
+
+The application is deployed and can be accessed at:
+
+**Host:** `api.credit-module.fatihbozik.com`
+
+**Port:** `8080`
+
+**Environment:** `Test`
+
 ---
 
 This `README` provides a comprehensive overview of the Credit Module project,
